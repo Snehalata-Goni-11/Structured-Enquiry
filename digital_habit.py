@@ -42,18 +42,14 @@ def classify_habit(screen_time, sleep_hours, breaks):
 if __name__ == "__main__":
     print("---- Digital Habit Classifier ----")
 
-    try:
-        # Command-line input
-        if len(sys.argv) == 4:
-            screen_time = float(sys.argv[1])
-            sleep_hours = float(sys.argv[2])
-            breaks = int(sys.argv[3])
+    if len(sys.argv) != 4:
+        print("Usage: python digital_habit.py <screen_time> <sleep_hours> <breaks>")
+        sys.exit(1)
 
-        # Interactive input
-        else:
-            screen_time = float(input("Enter screen time (hours): "))
-            sleep_hours = float(input("Enter sleep hours: "))
-            breaks = int(input("Enter breaks: "))
+    try:
+        screen_time = float(sys.argv[1])
+        sleep_hours = float(sys.argv[2])
+        breaks = int(sys.argv[3])
 
         print("\n--- Input Parameters ---")
         print("Screen Time :", screen_time, "hours")
@@ -61,7 +57,6 @@ if __name__ == "__main__":
         print("Breaks      :", breaks)
 
         result = classify_habit(screen_time, sleep_hours, breaks)
-
         print("\nDigital Habit Classification :", result)
 
     except ValueError:
